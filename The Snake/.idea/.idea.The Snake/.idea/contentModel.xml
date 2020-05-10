@@ -31,6 +31,8 @@
           <e p="CannonFuzzScript.cs" t="Include" />
           <e p="CanonBall.cs" t="Include" />
           <e p="CashManager.cs" t="Include" />
+          <e p="Food.cs" t="Include" />
+          <e p="FoodSpawner.cs" t="Include" />
           <e p="GameAudioManager.cs" t="Include" />
           <e p="GameClock.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />

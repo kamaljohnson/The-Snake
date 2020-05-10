@@ -126,7 +126,7 @@ public class Movement : MonoBehaviour
     
     private Directions GetMovementDirection(Vector3 newDestination)
     {
-        const float tolerance = 2f;
+        var tolerance = stepSize;
         var directionVector = newDestination - _destination;
         
         if (Vector3.Distance(directionVector, Vector3.right * stepSize) < tolerance)

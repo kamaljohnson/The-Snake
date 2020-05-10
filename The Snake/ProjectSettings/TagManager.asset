@@ -4,14 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Healthy Person
-  - Infected Person
-  - Dead Person
   - Ground
   - CannonBall
-  - Contagious Person
-  - UsedCannonBall
-  - CannonBallHolder
+  - SnakeHead
+  - Food
   layers:
   - Default
   - TransparentFX

@@ -260,8 +260,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/games/crowd-bomber-mania/user.keystore
-  AndroidKeyaliasName: alias
+  AndroidKeystoreName: D:/games/The-Snake/user.keystore
+  AndroidKeyaliasName: kerystore
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
