@@ -6,9 +6,12 @@ public class SnakeTail : MonoBehaviour
 
     public Movement movement;
 
-    public void SetFollowTransform(Transform followTransform)
+    public void Start()
     {
-        movement.followTransform = followTransform;
+        movement.movementType = MovementType.Follow;
+        if (movement.isEndTail)
+        {
+            Snake.endTail = this;
+        }
     }
-    
 }
