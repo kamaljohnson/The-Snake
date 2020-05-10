@@ -145,7 +145,6 @@ public class GameManager : MonoBehaviour
     
     private void Reset()
     {
-        Cannon.Reset();
         GameProgressManager.Reset();
         PowerUp.Reset();
 

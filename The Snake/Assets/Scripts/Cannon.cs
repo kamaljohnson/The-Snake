@@ -37,8 +37,6 @@ public class Cannon : MonoBehaviour
         _cannon = this;
         _touched = false;
         
-        GetCannonBallCountFromPref();
-        
         _cannonBallsLeft = cannonBallCount;
         _reloaded = true;
         _reloadTimer = 0;
@@ -127,7 +125,7 @@ public class Cannon : MonoBehaviour
         Vector3 dir = destination - shootTransform.position; // get Target Direction
         float height = dir.y; // get height difference
         dir.y = 0; // retain only the horizontal difference
-        float dist = dir.magnitude; // get horizontal direction
+        float dist = dir.magnitude; // get horizontal currentDirection
         float a = angle * Mathf.Deg2Rad; // Convert angle to radians
         dir.y = dist * Mathf.Tan(a); // set dir to the elevation angle.
         dist += height / Mathf.Tan(a); // Correction for small height differences
@@ -151,33 +149,10 @@ public class Cannon : MonoBehaviour
         {
             Destroy(ball);
         }
-        GetCannonBallCountFromPref();
         _cannon._cannonBallsLeft = _cannon.cannonBallCount;
 
     }
 
-    public static int CannonBallsRemaining()
-    {
-        return _cannon._cannonBallsLeft;
-    }
-
-    private static void GetCannonBallCountFromPref()
-    {
-        if (PlayerPrefs.HasKey("CannonBallCount"))
-        {
-            _cannon.cannonBallCount = PlayerPrefs.GetInt("CannonBallCount");
-        }
-        else
-        {
-            SetCannonBallCountToPref();
-        }
-    }
-
-    private static void SetCannonBallCountToPref()
-    {
-        PlayerPrefs.SetInt("CannonBallCount", _cannon.cannonBallCount);
-    }
-    
     private bool IsPointerOverUIObject() {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
