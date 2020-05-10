@@ -24,16 +24,20 @@ public class FoodSpawner : MonoBehaviour
     {
         if (!spawnFood) return;
         
-        var randX = Random.Range(_spawner.groundSize.x, -_spawner.groundSize.x);
-        var randZ = Random.Range(_spawner.groundSize.y, -_spawner.groundSize.y);
+        var randX = Mathf.RoundToInt(Random.Range(0, _spawner.groundSize.x));
+        var randZ = Mathf.RoundToInt(Random.Range(0, _spawner.groundSize.y));
 
+        randX *= 2;
+        randZ *= 2;
+        
         _spawnPointer = transform.position + new Vector3(randX, 5, randZ);
 
-        if (!Physics.Raycast(transform.position + _spawnPointer, Vector3.down, out var hit, 10f)) return;
+        if (!Physics.Raycast(_spawnPointer, Vector3.down, out var hit, 10f)) return;
         if (!hit.collider.CompareTag("Ground")) return;
         
         var foodObj = Instantiate(_spawner.food, transform);
-        foodObj.transform.localPosition = new Vector3(randX + 1f, 0, randZ + 1f);
+        Debug.Log(randX + " " + randZ);
+        foodObj.transform.localPosition = new Vector3(randX, 0, randZ);
         
         spawnFood = false;
     }

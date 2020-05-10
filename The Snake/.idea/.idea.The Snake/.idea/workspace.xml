@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4ef8b08-7290-4ea1-9991-f0085b770643" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Food.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Food.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Movement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Snake.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Snake.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SnakeHead.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SnakeHead.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FoodSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FoodSpawner.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +114,7 @@
       <workItem from="1589143862978" duration="716000" />
       <workItem from="1589144690423" duration="3011000" />
       <workItem from="1589149285513" duration="2000" />
-      <workItem from="1589150152378" duration="1274000" />
+      <workItem from="1589150152378" duration="3934000" />
     </task>
     <servers />
   </component>

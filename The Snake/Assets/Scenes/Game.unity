@@ -3353,7 +3353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepSize: 2
-  stepSpeed: 20
+  stepSpeed: 10
   snakeTailPrefab: {fileID: 4525528648344692805, guid: f0af2a647d00000469f91993f74efaa6,
     type: 3}
   snakeTailFiller: {fileID: 962415327290335724, guid: eca90aeb9d58acb4591095ae4286f8b7,
@@ -5084,7 +5084,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696077256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0.5}
+  m_LocalPosition: {x: -19, y: 0.75, z: -31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
