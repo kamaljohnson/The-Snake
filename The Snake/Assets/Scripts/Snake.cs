@@ -26,6 +26,5 @@ public class Snake : MonoBehaviour
 
     public static void Grow()
     {
-        endTail.movement.createTailAtEnd = true;
     }
 }

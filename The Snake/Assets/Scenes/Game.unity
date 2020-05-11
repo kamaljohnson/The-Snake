@@ -961,9 +961,7 @@ GameObject:
   - component: {fileID: 86318770}
   - component: {fileID: 86318769}
   - component: {fileID: 86318768}
-  - component: {fileID: 86318767}
   - component: {fileID: 86318766}
-  - component: {fileID: 86318771}
   m_Layer: 0
   m_Name: 2
   m_TagString: Untagged
@@ -997,26 +995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd71521b34d38794a944ec4390f6a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 86318767}
---- !u!114 &86318767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86318764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d4bbf672e014545968c0b84824f032, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextDirection: 2
-  movementType: 1
-  followTransform: {fileID: 1545887284}
-  tailGapFillerActive: 0
-  isEndTail: 0
-  createTailAtEnd: 0
-  justCreated: 0
 --- !u!65 &86318768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1079,20 +1057,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86318764}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &86318771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86318764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecfdbfca38db0843a55374d711d2a2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  hit: 0
 --- !u!1 &103544299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,9 +1136,7 @@ GameObject:
   - component: {fileID: 110330692}
   - component: {fileID: 110330691}
   - component: {fileID: 110330690}
-  - component: {fileID: 110330689}
   - component: {fileID: 110330688}
-  - component: {fileID: 110330693}
   m_Layer: 0
   m_Name: 5
   m_TagString: Untagged
@@ -1208,26 +1170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd71521b34d38794a944ec4390f6a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 110330689}
---- !u!114 &110330689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110330686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d4bbf672e014545968c0b84824f032, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextDirection: 2
-  movementType: 1
-  followTransform: {fileID: 493283961}
-  tailGapFillerActive: 0
-  isEndTail: 0
-  createTailAtEnd: 0
-  justCreated: 0
 --- !u!65 &110330690
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1290,20 +1232,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110330686}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &110330693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110330686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecfdbfca38db0843a55374d711d2a2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  hit: 0
 --- !u!1 &137774590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,7 +1585,6 @@ GameObject:
   - component: {fileID: 340799359}
   - component: {fileID: 340799358}
   - component: {fileID: 340799362}
-  - component: {fileID: 340799361}
   m_Layer: 0
   m_Name: Head
   m_TagString: SnakeHead
@@ -1741,25 +1668,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340799356}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &340799361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340799356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d4bbf672e014545968c0b84824f032, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextDirection: 2
-  movementType: 0
-  followTransform: {fileID: 0}
-  tailGapFillerActive: 0
-  isEndTail: 0
-  createTailAtEnd: 0
-  justCreated: 0
 --- !u!114 &340799362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1772,8 +1680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b9009952c31a64490da7899f5fa04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 340799361}
-  input: {fileID: 140193421}
 --- !u!1 &360161431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,9 +1758,7 @@ GameObject:
   - component: {fileID: 493283966}
   - component: {fileID: 493283965}
   - component: {fileID: 493283964}
-  - component: {fileID: 493283963}
   - component: {fileID: 493283962}
-  - component: {fileID: 493283967}
   m_Layer: 0
   m_Name: 4
   m_TagString: Untagged
@@ -1888,26 +1792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd71521b34d38794a944ec4390f6a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 493283963}
---- !u!114 &493283963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493283960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d4bbf672e014545968c0b84824f032, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextDirection: 2
-  movementType: 1
-  followTransform: {fileID: 1302798264}
-  tailGapFillerActive: 0
-  isEndTail: 0
-  createTailAtEnd: 0
-  justCreated: 0
 --- !u!65 &493283964
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1970,20 +1854,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493283960}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &493283967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493283960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecfdbfca38db0843a55374d711d2a2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  hit: 0
 --- !u!1 &505580377
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,6 +3384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1165365256}
   - component: {fileID: 1165365257}
+  - component: {fileID: 1165365258}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -3561,6 +3432,18 @@ MonoBehaviour:
   snakeTailFiller: {fileID: 962415327290335724, guid: eca90aeb9d58acb4591095ae4286f8b7,
     type: 3}
   initialSize: 7
+--- !u!114 &1165365258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165365255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d4bbf672e014545968c0b84824f032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1165400671
 GameObject:
   m_ObjectHideFlags: 0
@@ -4027,9 +3910,7 @@ GameObject:
   - component: {fileID: 1302798269}
   - component: {fileID: 1302798268}
   - component: {fileID: 1302798267}
-  - component: {fileID: 1302798266}
   - component: {fileID: 1302798265}
-  - component: {fileID: 1302798270}
   m_Layer: 0
   m_Name: 3
   m_TagString: Untagged
@@ -4063,26 +3944,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd71521b34d38794a944ec4390f6a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 1302798266}
---- !u!114 &1302798266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302798263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d4bbf672e014545968c0b84824f032, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextDirection: 2
-  movementType: 1
-  followTransform: {fileID: 86318765}
-  tailGapFillerActive: 0
-  isEndTail: 0
-  createTailAtEnd: 0
-  justCreated: 0
 --- !u!65 &1302798267
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4145,20 +4006,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302798263}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1302798270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302798263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecfdbfca38db0843a55374d711d2a2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  hit: 0
 --- !u!1 &1363781952
 GameObject:
   m_ObjectHideFlags: 0
@@ -4916,9 +4763,7 @@ GameObject:
   - component: {fileID: 1545887289}
   - component: {fileID: 1545887288}
   - component: {fileID: 1545887287}
-  - component: {fileID: 1545887286}
   - component: {fileID: 1545887285}
-  - component: {fileID: 1545887290}
   m_Layer: 0
   m_Name: 1
   m_TagString: Untagged
@@ -4952,26 +4797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd71521b34d38794a944ec4390f6a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 1545887286}
---- !u!114 &1545887286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545887283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d4bbf672e014545968c0b84824f032, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextDirection: 2
-  movementType: 1
-  followTransform: {fileID: 340799357}
-  tailGapFillerActive: 0
-  isEndTail: 0
-  createTailAtEnd: 0
-  justCreated: 0
 --- !u!65 &1545887287
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5034,20 +4859,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545887283}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1545887290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545887283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecfdbfca38db0843a55374d711d2a2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  hit: 0
 --- !u!1 &1547050524
 GameObject:
   m_ObjectHideFlags: 0
@@ -6414,5 +6225,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: End
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4525528648344692802, guid: f0af2a647d00000469f91993f74efaa6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f0af2a647d00000469f91993f74efaa6, type: 3}
