@@ -36,7 +36,6 @@ public class FoodSpawner : MonoBehaviour
         if (!hit.collider.CompareTag("Ground")) return;
         
         var foodObj = Instantiate(_spawner.food, transform);
-        Debug.Log(randX + " " + randZ);
         foodObj.transform.localPosition = new Vector3(randX, 0, randZ);
         
         spawnFood = false;

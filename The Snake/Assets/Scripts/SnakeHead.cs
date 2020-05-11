@@ -4,6 +4,8 @@ using UnityEngine;
 public class SnakeHead : MonoBehaviour
 {
     public Movement movement;
+
+    public PlayerInput input;
     
     private void Update()
     {
@@ -12,29 +14,13 @@ public class SnakeHead : MonoBehaviour
 
     private void HandleMovement()
     {
-        HandleInput();
-    }
-    
-    private void HandleInput()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        var nextDirection = input.HandleInput();
+        if (nextDirection != Directions.None)
         {
-            movement.nextDirection = Directions.Forward;
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            movement.nextDirection = Directions.Back;
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            movement.nextDirection = Directions.Right;
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            movement.nextDirection = Directions.Left;
+            movement.nextDirection = nextDirection;
         }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Food"))

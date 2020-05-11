@@ -41,6 +41,7 @@
           <e p="Movement.cs" t="Include" />
           <e p="NotificationManager.cs" t="Include" />
           <e p="NotificationUnit.cs" t="Include" />
+          <e p="PlayerInput.cs" t="Include" />
           <e p="PowerUp.cs" t="Include" />
           <e p="RewardedAdsManager.cs" t="Include" />
           <e p="Snake.cs" t="Include" />
