@@ -5,7 +5,6 @@ public class Food : MonoBehaviour
 {
     public static void Eat(GameObject food)
     {
-        Handheld.Vibrate();
         Snake.Grow();
         
         Destroy(food);

@@ -2918,7 +2918,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 6.876e-42, y: 5.9e-44, z: 9.11e-43, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 2.2264e-41, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3528,6 +3528,7 @@ GameObject:
   - component: {fileID: 1165365257}
   - component: {fileID: 1165365258}
   - component: {fileID: 1165365259}
+  - component: {fileID: 1165365260}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -3608,6 +3609,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchOffDragDistance: 40
+--- !u!114 &1165365260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165365255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbce7314d4cdf6345a829ef67be00e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthLevel: 10
 --- !u!1 &1165400671
 GameObject:
   m_ObjectHideFlags: 0

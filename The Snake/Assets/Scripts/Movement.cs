@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Vector3 = UnityEngine.Vector3;
 
 public class Movement : MonoBehaviour
@@ -20,6 +21,8 @@ public class Movement : MonoBehaviour
     
     private void Update()
     {
+        if (!Health.IsAlive()) return;
+        
         HandleInput();
         
         if (!_snapped)
@@ -35,7 +38,23 @@ public class Movement : MonoBehaviour
     private void Move()
     {
         const float tolerance = 0.1f;
-        var _snapped = false;
+        var snapped = false;
+
+        if (SnakeFrontCollider.needsDeviation)
+        {
+            foreach (var tail in Snake.snakeBody)
+            {
+                var tailTransform = tail.transform;
+                var loc = tailTransform.localPosition;
+                var x = Mathf.RoundToInt(loc.x);
+                var y = Mathf.RoundToInt(loc.y);
+                var z = Mathf.RoundToInt(loc.z);
+                tailTransform.localPosition = new Vector3(x, y, z);
+            }
+            _snapped = true;
+            DeviateMovement();
+            return;
+        }
 
         for (var i = 0; i < Snake.snakeBody.Count; i++)
         {
@@ -48,11 +67,11 @@ public class Movement : MonoBehaviour
             if (i >= Snake.size - 1) continue;
             if (Vector3.Distance(tailTransform.localPosition, tailDestination) < tolerance)
             {
-                _snapped = true;
+                snapped = true;
             }
         }
 
-        if (_snapped)
+        if (snapped)
         {
             foreach (var tail in Snake.snakeBody)
             {
@@ -71,7 +90,44 @@ public class Movement : MonoBehaviour
                 break;
             }
             
-            Movement._snapped = true;
+            _snapped = true;
+        }
+    }
+
+    private void DeviateMovement()
+    {
+        SnakeFrontCollider.needsDeviation = false;
+
+        foreach (var tail in Snake.snakeBody)
+        {
+            tail.destination = tail.transform.localPosition;
+        }
+
+        var headLocation = Snake.snakeBody[0].transform.position;
+        
+        if (_currentDirection == Directions.Right || _currentDirection == Directions.Left)
+        {
+            
+            if (!Physics.Raycast(headLocation, Vector3.forward, out _, stepSize))
+            {
+                _nextDirection = Directions.Forward;
+                return;
+            }
+            if (!Physics.Raycast(headLocation, Vector3.back, out _, stepSize))
+            {
+                _nextDirection = Directions.Back;
+                return;
+            }
+        }
+        
+        if (!Physics.Raycast(headLocation, Vector3.right, out _, stepSize))
+        {
+            _nextDirection = Directions.Right;
+            return;
+        }
+        if (!Physics.Raycast(headLocation, Vector3.left, out _, stepSize))
+        {
+            _nextDirection = Directions.Left;
         }
     }
     
