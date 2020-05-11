@@ -2154,7 +2154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623750426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: -2}
+  m_LocalPosition: {x: 6, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1165365256}
@@ -3449,8 +3449,6 @@ MonoBehaviour:
   stepSpeed: 10
   snakeTailPrefab: {fileID: 4525528648344692805, guid: f0af2a647d00000469f91993f74efaa6,
     type: 3}
-  snakeTailFiller: {fileID: 962415327290335724, guid: eca90aeb9d58acb4591095ae4286f8b7,
-    type: 3}
   initialSize: 5
   initialSnakeBody:
   - {fileID: 340799361}
@@ -3471,6 +3469,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 1165365259}
+  junctionFillerPrefab: {fileID: 962415327290335724, guid: eca90aeb9d58acb4591095ae4286f8b7,
+    type: 3}
+  junctionFillers: []
 --- !u!114 &1165365259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4898,7 +4899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPlacementId: rewardedVideo
   gameId: 3580709
-  testMode: 0
+  testMode: 1
 --- !u!114 &1599056074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4913,7 +4914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementId: video
   gameId: 3580709
-  testMode: 0
+  testMode: 1
 --- !u!4 &1599056075
 Transform:
   m_ObjectHideFlags: 0
@@ -4942,7 +4943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bannerPlacement: bottomBanner
   gameId: 3580709
-  testMode: 0
+  testMode: 1
 --- !u!1 &1637370494
 GameObject:
   m_ObjectHideFlags: 0
@@ -5698,7 +5699,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824696777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: -4}
+  m_LocalPosition: {x: 8, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1165365256}

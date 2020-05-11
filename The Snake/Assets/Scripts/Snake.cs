@@ -11,8 +11,6 @@ public class Snake : MonoBehaviour
 
     public GameObject snakeTailPrefab;
     
-    public GameObject snakeTailFiller;
-    
     public static SnakeTail endTail;
 
     public int initialSize;
@@ -22,8 +20,12 @@ public class Snake : MonoBehaviour
     
     public static List<SnakeTail> snakeBody = new List<SnakeTail>();
 
+    public new static Transform transform;
+    
     public void Start()
     {
+        transform = GetComponent<Transform>();
+        
         snakeBody = initialSnakeBody;
         
         size = initialSize;
