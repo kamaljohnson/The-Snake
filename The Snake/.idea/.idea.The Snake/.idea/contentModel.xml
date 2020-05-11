@@ -37,7 +37,6 @@
           <e p="GameClock.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="GameProgressManager.cs" t="Include" />
-          <e p="Health.cs" t="Include" />
           <e p="LevelManager.cs" t="Include" />
           <e p="Movement.cs" t="Include" />
           <e p="NotificationManager.cs" t="Include" />
@@ -46,6 +45,7 @@
           <e p="PowerUp.cs" t="Include" />
           <e p="RewardedAdsManager.cs" t="Include" />
           <e p="Snake.cs" t="Include" />
+          <e p="SnakeFrontCollider.cs" t="Include" />
           <e p="SnakeHead.cs" t="Include" />
           <e p="SnakeTail.cs" t="Include" />
           <e p="UnityBannerAds.cs" t="Include" />

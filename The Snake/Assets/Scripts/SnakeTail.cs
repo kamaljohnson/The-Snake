@@ -4,14 +4,14 @@ using UnityEngine;
 public class SnakeTail : MonoBehaviour
 {
 
-    public Movement movement;
+    public Vector3 destination;
 
-    public void Start()
+    public new Transform transform;
+
+    private void Start()
     {
-        movement.movementType = MovementType.Follow;
-        if (movement.isEndTail)
-        {
-            Snake.endTail = this;
-        }
+        destination = GetComponent<Transform>().localPosition;
+        
+        transform = GetComponent<Transform>();
     }
 }

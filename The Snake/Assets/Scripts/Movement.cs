@@ -1,246 +1,190 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
-
-public enum MovementType
-{
-    Controlled,
-    Follow
-}
+using Vector3 = UnityEngine.Vector3;
 
 public class Movement : MonoBehaviour
 {
     public static float stepSpeed;
     public static float stepSize;
+
+    public PlayerInput input;
+
+    public GameObject junctionFillerPrefab;
+
+    private static bool _snapped = true;
+    private static Directions _nextDirection = Directions.Forward;
+    private static Directions _currentDirection = Directions.Forward;
+
+    public List<GameObject> junctionFillers = new List<GameObject>(); 
     
-    private Directions _currentDirection;
-    public Directions nextDirection;
-
-    private Vector3 _destination;
-    private bool _destinationIsReached;
-
-    public MovementType movementType;
-
-    public Transform followTransform;
-
-    public bool tailGapFillerActive;
-    private GameObject tailGapFillerObj;
-
-    public bool isEndTail;
-
-    public bool createTailAtEnd;
-    public bool justCreated;
-
-    private Snake _snake;
-
-    public static bool canMove;
-    
-    private void Start()
-    {
-        canMove = true;
-        _destinationIsReached = false;
-        _snake = FindObjectOfType<Snake>();
-
-        _currentDirection = Directions.None;
-        _destination = transform.position;
-    }
-
     private void Update()
     {
-        if (_destinationIsReached)
-        {
-            UpdateDirection();
-        }
-
-        if (canMove)
+        HandleInput();
+        
+        if (!_snapped)
         {
             Move();
         }
-    }
-    
-    private void UpdateDirection()
-    {
-        _destinationIsReached = false;
-        switch (movementType)
+        else
         {
-            case MovementType.Controlled:
-                break;
-            case MovementType.Follow:
-                var newDestination = followTransform.position;
-                nextDirection = GetMovementDirection(newDestination);
-                break;
+            UpdateDestinations();
         }
-        
-        if (tailGapFillerActive)
-        {
-            tailGapFillerActive = false;
-            Destroy(tailGapFillerObj);
-        }
-        
-        if (nextDirection != _currentDirection && !isEndTail)
-        {
-            FillFrontGap();
-        }
-
-        if (CheckDirectionChange())
-        {
-            _currentDirection = nextDirection;
-        }
-
-        
-        switch (_currentDirection)
-        {
-            case Directions.Right:
-                _destination += Vector3.right * stepSize;
-                break;
-            case Directions.Left:
-                _destination -= Vector3.right * stepSize;
-                break;
-            case Directions.Forward:
-                _destination += Vector3.forward * stepSize;
-                break;
-            case Directions.Back:
-                _destination -= Vector3.forward * stepSize;
-                break;
-        }
-        
-        if (createTailAtEnd)
-        {
-            CreateTailAtEnd();
-        }
-
     }
 
-    private bool CheckDirectionChange()
-    {
-        if (movementType == MovementType.Follow)
-            return true;
-        
-        switch (_currentDirection)
-        {
-            case Directions.Right:
-                return nextDirection != Directions.Left;
-            case Directions.Left:
-                return nextDirection != Directions.Right;
-            case Directions.Forward:
-                return nextDirection != Directions.Back;
-            case Directions.Back:
-                return nextDirection != Directions.Forward;
-        }
-
-        return true;
-    }
-    
-    private Directions GetMovementDirection(Vector3 newDestination)
-    {
-        var tolerance = stepSize;
-        var directionVector = newDestination - _destination;
-        
-        if (Vector3.Distance(directionVector, Vector3.right * stepSize) < tolerance)
-        {
-            return Directions.Right;
-        }
-        if (Vector3.Distance(directionVector, -Vector3.right * stepSize) < tolerance)
-        {
-            return Directions.Left;
-        }
-        if (Vector3.Distance(directionVector, Vector3.forward * stepSize) < tolerance)
-        {
-            return Directions.Forward;
-        }
-        
-        return Directions.Back;
-        
-    }
-    
     private void Move()
     {
-        if (justCreated)
+        const float tolerance = 0.1f;
+        var _snapped = false;
+
+        for (var i = 0; i < Snake.snakeBody.Count; i++)
         {
-            if (Vector3.Distance(followTransform.position, transform.position) < stepSize)
+            var tail = Snake.snakeBody[i];
+            var tailTransform = tail.transform;
+            var tailDestination = tail.destination;
+            tailTransform.localPosition = Vector3.MoveTowards(tailTransform.localPosition,
+                tailDestination, stepSpeed * Time.deltaTime);
+
+            if (i >= Snake.size - 1) continue;
+            if (Vector3.Distance(tailTransform.localPosition, tailDestination) < tolerance)
             {
-                return;
+                _snapped = true;
+            }
+        }
+
+        if (_snapped)
+        {
+            foreach (var tail in Snake.snakeBody)
+            {
+                var tailTransform = tail.transform;
+                var tailDestination = tail.destination;
+                tailTransform.localPosition = tailDestination;
             }
 
-            justCreated = false;
-            _destinationIsReached = true;
-            return;
-        }
-        
-        transform.position = Vector3.MoveTowards(transform.position, _destination, stepSpeed * Time.deltaTime);
+            foreach (var filler in junctionFillers)
+            {
+                if (filler.transform.localPosition != Snake.snakeBody[Snake.size - 1].transform.localPosition) continue;
+                
+                var fillerObj = filler;
+                junctionFillers.Remove(fillerObj);
+                Destroy(filler);
+                break;
+            }
             
-        if (Vector3.Distance(_destination, transform.position) <= 0.01f)
+            Movement._snapped = true;
+        }
+    }
+    
+    private void UpdateDestinations()
+    {
+        _currentDirection = _nextDirection;
+        var head = Snake.snakeBody[0];
+
+        for (var i = Snake.size - 1; i > 0; i--)
         {
-            transform.position = _destination;
-            _destinationIsReached = true;
+            var nextTail = Snake.snakeBody[i - 1];
+            Snake.snakeBody[i].destination = nextTail.destination;
+        }
+
+        head.destination = GetHeadDestination(head.destination);
+
+        Snake.snake.frontCollider.transform.localPosition = head.destination;
+        
+        CheckDirectionChange();
+        
+        _snapped = false;
+        if (Snake.grow)
+        {
+            Grow();
+            Snake.grow = false;
         }
     }
 
-    private void FillFrontGap()
+    private void Grow()
     {
-        tailGapFillerObj = Instantiate(FindObjectOfType<Snake>().snakeTailFiller, transform.position, Quaternion.identity);
-        tailGapFillerActive = true;
-    }
+        var endTailObj = Instantiate(Snake.tailPrefab, Snake.transform);
+        endTailObj.transform.localPosition = Snake.snakeBody[Snake.size - 1].transform.localPosition;
+        var tail = endTailObj.GetComponent<SnakeTail>();
 
-    private void CreateTailAtEnd()
-    {
-        var endTailObj = Instantiate(_snake.snakeTailPrefab, _snake.transform);
-        endTailObj.transform.position = transform.position;
-        
-        Snake.endTail.movement.isEndTail = false;
-        
-        var endTail = endTailObj.GetComponent<SnakeTail>();
-        endTail.movement.SetFollowTransform(transform);
-        endTail.movement.justCreated = true;
-        endTail.movement.isEndTail = true;
-        
-        createTailAtEnd = false;
-        Snake.endTail = endTail;
-
-        gameObject.name = (Snake.size-1).ToString();
-        endTailObj.name = "New End";
+        tail.transform = endTailObj.transform;
+        tail.destination = tail.transform.localPosition;
+        Snake.snakeBody.Add(tail);
         Snake.size++;
+        Snake.snakeBody[Snake.size - 2].gameObject.name = (Snake.size - 2).ToString();
+        endTailObj.name = "End";
     }
-
-    private void SetFollowTransform(Transform followTransform)
+    
+    private void CheckDirectionChange()
     {
-        this.followTransform = followTransform;
-    }
+        const float tolerance = 0.1f;
 
-    public void Deviate()
-    {
-        
-        Debug.Log("here");
+        var head = Snake.snakeBody[0];
+        var tail1 = Snake.snakeBody[1];
 
-        if (_currentDirection == Directions.Right || _currentDirection == Directions.Left)
+        var headDirectionVector = head.destination - head.transform.localPosition;
+        var tail1DirectionVector = tail1.destination - tail1.transform.localPosition;
+
+        if (Vector3.Distance(headDirectionVector, tail1DirectionVector) > tolerance)
         {
+            var junctionFillerObj = Instantiate(junctionFillerPrefab, Snake.transform);
+            junctionFillerObj.transform.localPosition = head.transform.localPosition;
+            junctionFillerObj.name = "JF";
+            junctionFillers.Add(junctionFillerObj);
+        }
+    }
+    
+    private void HandleInput()
+    {
+        var nextDirection = input.HandleInput();
+        if (nextDirection != Directions.None)
+        {
+            switch (_currentDirection)
+            {
+                case Directions.Right:
+                    if(nextDirection == Directions.Left)
+                        return;
+                    break;
+                case Directions.Left:
+                    if(nextDirection == Directions.Right)
+                        return;
+                    break;
+                case Directions.Forward:
+                    if(nextDirection == Directions.Back)
+                        return;
+                    break;
+                case Directions.Back:
+                    if(nextDirection == Directions.Forward)
+                        return;
+                    break;
+            }
             
-            if (!Physics.Raycast(transform.position, Vector3.forward, out _, stepSize))
-            {
-                Debug.Log("forward");
-                nextDirection = Directions.Forward;
-                return;
-            }
-            if (!Physics.Raycast(transform.position, Vector3.back, out _, stepSize))
-            {
-                Debug.Log("back");
-                nextDirection = Directions.Back;
-                return;
-            }
+            _nextDirection = nextDirection;
         }
-        
-        if (!Physics.Raycast(transform.position, Vector3.right, out _, stepSize))
-        {
-            Debug.Log("right");
-            nextDirection = Directions.Right;
-            return;
-        }
-        if (!Physics.Raycast(transform.position, Vector3.left, out _, stepSize))
-        {
-            Debug.Log("left");
-            nextDirection = Directions.Left;
-            return;
-        }
+    }
 
+
+    private static Vector3 GetHeadDestination(Vector3 currentPosition)
+    {
+        return currentPosition + DirectionVector(_nextDirection) * stepSize;
+    }
+
+    private static Vector3 DirectionVector(Directions direction)
+    {
+        switch (direction)
+        {
+            case Directions.Right:
+                return Vector3.right;
+            case Directions.Left:
+                return Vector3.left;
+            case Directions.Forward:
+                return Vector3.forward;
+            case Directions.Back:
+                return Vector3.back;
+            case Directions.None:
+                return Vector3.zero;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
+        }
     }
 }
 
