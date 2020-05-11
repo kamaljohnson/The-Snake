@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4ef8b08-7290-4ea1-9991-f0085b770643" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Health.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Health.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SnakeTail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SnakeTail.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FoodSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FoodSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Movement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Snake.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Snake.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SnakeFrontCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SnakeFrontCollider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SnakeTail.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SnakeTail.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,11 +73,11 @@
         <option value="$PROJECT_DIR$/Assets/SnakeFrontCollider.cs" />
         <option value="$PROJECT_DIR$/Assets/Health.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Food.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SnakeTail.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Movement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FoodSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SnakeFrontCollider.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Snake.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Movement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SnakeTail.cs" />
       </list>
     </option>
   </component>
@@ -145,7 +139,7 @@
       <workItem from="1589149285513" duration="2000" />
       <workItem from="1589150152378" duration="22708000" />
       <workItem from="1589202685255" duration="2806000" />
-      <workItem from="1589211345827" duration="7572000" />
+      <workItem from="1589211345827" duration="8969000" />
     </task>
     <servers />
   </component>

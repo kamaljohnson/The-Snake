@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6924127229458606807}
   m_Layer: 0
   m_Name: 2
-  m_TagString: SnakeHead
+  m_TagString: Tail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6924127229458606802
 MonoBehaviour:
@@ -206,7 +206,6 @@ MonoBehaviour:
   input: {fileID: 6924127229481539811}
   junctionFillerPrefab: {fileID: 962415327290335724, guid: eca90aeb9d58acb4591095ae4286f8b7,
     type: 3}
-  junctionFillers: []
 --- !u!114 &6924127229481539811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +248,7 @@ GameObject:
   - component: {fileID: 6924127230162362663}
   m_Layer: 0
   m_Name: End
-  m_TagString: SnakeHead
+  m_TagString: Tail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -328,7 +327,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6924127230162362658
 MonoBehaviour:
@@ -455,7 +454,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6924127230305855338
 MonoBehaviour:
@@ -556,7 +555,7 @@ GameObject:
   - component: {fileID: 6924127230605686931}
   m_Layer: 0
   m_Name: 1
-  m_TagString: SnakeHead
+  m_TagString: Tail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -635,7 +634,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6924127230605686942
 MonoBehaviour:
@@ -683,7 +682,7 @@ GameObject:
   - component: {fileID: 6924127231086224840}
   m_Layer: 0
   m_Name: 3
-  m_TagString: SnakeHead
+  m_TagString: Tail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -762,7 +761,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6924127231086224883
 MonoBehaviour:

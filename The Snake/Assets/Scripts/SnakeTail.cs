@@ -17,6 +17,6 @@ public class SnakeTail : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("tail destroyed");    
+        
     }
 }
