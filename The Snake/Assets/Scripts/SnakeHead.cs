@@ -7,22 +7,9 @@ public class SnakeHead : MonoBehaviour
 
     public PlayerInput input;
 
-    public Health health;
-    
     private void Update()
     {
         HandleMovement();
-
-        if (health.health == 0)
-        {
-            Movement.canMove = false;
-        }
-
-        if (health.hit)
-        {
-            movement.Deviate();
-            health.hit = false;
-        }
     }
 
     private void HandleMovement()
@@ -41,10 +28,6 @@ public class SnakeHead : MonoBehaviour
             Food.Eat();
             Destroy(other.gameObject);
         } 
-        else if (other.CompareTag("Wall"))
-        {
-            health.GetHit();
-        }
     }
     
 }

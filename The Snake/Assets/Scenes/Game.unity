@@ -1092,6 +1092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  hit: 0
 --- !u!1 &103544299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,6 +1303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  hit: 0
 --- !u!1 &137774590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,7 +1658,6 @@ GameObject:
   - component: {fileID: 340799358}
   - component: {fileID: 340799362}
   - component: {fileID: 340799361}
-  - component: {fileID: 340799363}
   m_Layer: 0
   m_Name: Head
   m_TagString: SnakeHead
@@ -1773,20 +1774,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 340799361}
   input: {fileID: 140193421}
-  health: {fileID: 340799363}
---- !u!114 &340799363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340799356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecfdbfca38db0843a55374d711d2a2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
 --- !u!1 &360161431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,6 +1983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  hit: 0
 --- !u!1 &505580377
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,7 +2994,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.576
@@ -3045,7 +3033,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 7.8899e-41, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 9.711e-41, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -4170,6 +4158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  hit: 0
 --- !u!1 &1363781952
 GameObject:
   m_ObjectHideFlags: 0
@@ -5058,6 +5047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  hit: 0
 --- !u!1 &1547050524
 GameObject:
   m_ObjectHideFlags: 0
