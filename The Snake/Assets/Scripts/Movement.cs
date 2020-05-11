@@ -31,9 +31,12 @@ public class Movement : MonoBehaviour
     public bool justCreated;
 
     private Snake _snake;
+
+    public static bool canMove;
     
     private void Start()
     {
+        canMove = true;
         _destinationIsReached = false;
         _snake = FindObjectOfType<Snake>();
 
@@ -47,8 +50,11 @@ public class Movement : MonoBehaviour
         {
             UpdateDirection();
         }
-        
-        Move();
+
+        if (canMove)
+        {
+            Move();
+        }
     }
     
     private void UpdateDirection()
@@ -200,6 +206,42 @@ public class Movement : MonoBehaviour
         this.followTransform = followTransform;
     }
 
+    public void Deviate()
+    {
+        
+        Debug.Log("here");
+
+        if (_currentDirection == Directions.Right || _currentDirection == Directions.Left)
+        {
+            
+            if (!Physics.Raycast(transform.position, Vector3.forward, out _, stepSize))
+            {
+                Debug.Log("forward");
+                nextDirection = Directions.Forward;
+                return;
+            }
+            if (!Physics.Raycast(transform.position, Vector3.back, out _, stepSize))
+            {
+                Debug.Log("back");
+                nextDirection = Directions.Back;
+                return;
+            }
+        }
+        
+        if (!Physics.Raycast(transform.position, Vector3.right, out _, stepSize))
+        {
+            Debug.Log("right");
+            nextDirection = Directions.Right;
+            return;
+        }
+        if (!Physics.Raycast(transform.position, Vector3.left, out _, stepSize))
+        {
+            Debug.Log("left");
+            nextDirection = Directions.Left;
+            return;
+        }
+
+    }
 }
 
 public enum Directions

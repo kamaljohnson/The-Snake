@@ -1,10 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Food : MonoBehaviour
 {
     public static void Eat()
     {
+        Handheld.Vibrate();
         Snake.Grow();
     }
 

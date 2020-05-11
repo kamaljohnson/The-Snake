@@ -8,6 +8,8 @@ TagManager:
   - CannonBall
   - SnakeHead
   - Food
+  - CannonBallHolder
+  - Wall
   layers:
   - Default
   - TransparentFX
