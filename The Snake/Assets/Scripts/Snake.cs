@@ -10,6 +10,7 @@ public class Snake : MonoBehaviour
     public float stepSpeed;
 
     public GameObject snakeTailPrefab;
+    public static GameObject tailPrefab; 
     
     public static SnakeTail endTail;
 
@@ -21,9 +22,12 @@ public class Snake : MonoBehaviour
     public static List<SnakeTail> snakeBody = new List<SnakeTail>();
 
     public new static Transform transform;
+
+    public static bool grow;
     
     public void Start()
     {
+        tailPrefab = snakeTailPrefab;
         transform = GetComponent<Transform>();
         
         snakeBody = initialSnakeBody;
@@ -37,6 +41,6 @@ public class Snake : MonoBehaviour
     
     public static void Grow()
     {
-        
+        grow = true;
     }
 }

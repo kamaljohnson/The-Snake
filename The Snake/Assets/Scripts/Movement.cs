@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 public class Movement : MonoBehaviour
@@ -40,13 +37,15 @@ public class Movement : MonoBehaviour
         const float tolerance = 0.1f;
         var _snapped = false;
 
-        foreach (var tail in Snake.snakeBody)
+        for (var i = 0; i < Snake.snakeBody.Count; i++)
         {
+            var tail = Snake.snakeBody[i];
             var tailTransform = tail.transform;
-            var tailDestination = tail.destination; 
+            var tailDestination = tail.destination;
             tailTransform.localPosition = Vector3.MoveTowards(tailTransform.localPosition,
                 tailDestination, stepSpeed * Time.deltaTime);
 
+            if (i >= Snake.size - 1) continue;
             if (Vector3.Distance(tailTransform.localPosition, tailDestination) < tolerance)
             {
                 _snapped = true;
@@ -92,8 +91,27 @@ public class Movement : MonoBehaviour
         CheckDirectionChange();
         
         _snapped = false;
+        if (Snake.grow)
+        {
+            Grow();
+            Snake.grow = false;
+        }
     }
 
+    private void Grow()
+    {
+        var endTailObj = Instantiate(Snake.tailPrefab, Snake.transform);
+        endTailObj.transform.localPosition = Snake.snakeBody[Snake.size - 1].transform.localPosition;
+        var tail = endTailObj.GetComponent<SnakeTail>();
+
+        tail.transform = endTailObj.transform;
+        tail.destination = tail.transform.localPosition;
+        Snake.snakeBody.Add(tail);
+        Snake.size++;
+        Snake.snakeBody[Snake.size - 2].gameObject.name = (Snake.size - 2).ToString();
+        endTailObj.name = "End";
+    }
+    
     private void CheckDirectionChange()
     {
         const float tolerance = 0.1f;
