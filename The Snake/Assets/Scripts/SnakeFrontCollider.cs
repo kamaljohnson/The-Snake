@@ -13,6 +13,7 @@ public class SnakeFrontCollider : MonoBehaviour
         {
             case "Wall":
                 needsDeviation = true;
+                Wall.Hit();
                 Health.Hit();
                 break;
             case "Food":

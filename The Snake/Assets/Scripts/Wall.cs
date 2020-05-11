@@ -1,18 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Animator animator;
+
+    public static Wall wall;
+
+    private void Start()
     {
-        
+        wall = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void Hit()
     {
-        
+        wall.animator.Play("WallHitAnimation", -1, 0f);
     }
 }
