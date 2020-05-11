@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
 
     private static bool _snapped = true;
     private static Directions _nextDirection = Directions.Forward;
+    private static Directions _currentDirection = Directions.Forward;
 
     public List<GameObject> junctionFillers = new List<GameObject>(); 
     
@@ -77,6 +78,7 @@ public class Movement : MonoBehaviour
     
     private void UpdateDestinations()
     {
+        _currentDirection = _nextDirection;
         var head = Snake.snakeBody[0];
 
         for (var i = Snake.size - 1; i > 0; i--)
@@ -116,6 +118,26 @@ public class Movement : MonoBehaviour
         var nextDirection = input.HandleInput();
         if (nextDirection != Directions.None)
         {
+            switch (_currentDirection)
+            {
+                case Directions.Right:
+                    if(nextDirection == Directions.Left)
+                        return;
+                    break;
+                case Directions.Left:
+                    if(nextDirection == Directions.Right)
+                        return;
+                    break;
+                case Directions.Forward:
+                    if(nextDirection == Directions.Back)
+                        return;
+                    break;
+                case Directions.Back:
+                    if(nextDirection == Directions.Forward)
+                        return;
+                    break;
+            }
+            
             _nextDirection = nextDirection;
         }
     }
