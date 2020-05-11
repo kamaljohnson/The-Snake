@@ -9,20 +9,20 @@ public class FoodSpawner : MonoBehaviour
     
     private static Vector3 _spawnPointer;
 
+    public int initialFoodCount;
+    private int _foodSpawnCount;
+    
     public Vector2 groundSize;
 
-    private bool spawnFood;
-    
     public void Start()
     {
         _spawner = this;
-        
-        SpawnFood();
+        SpawnFood(initialFoodCount);
     }
 
     public void Update()
     {
-        if (!spawnFood) return;
+        if (_foodSpawnCount == 0) return;
         
         var randX = Mathf.RoundToInt(Random.Range(0, _spawner.groundSize.x));
         var randZ = Mathf.RoundToInt(Random.Range(0, _spawner.groundSize.y));
@@ -37,13 +37,13 @@ public class FoodSpawner : MonoBehaviour
         
         var foodObj = Instantiate(_spawner.food, transform);
         foodObj.transform.localPosition = new Vector3(randX, 0, randZ);
-        
-        spawnFood = false;
+
+        _foodSpawnCount--;
     }
-    
-    public static void SpawnFood()
+
+    public static void SpawnFood(int count = 1)
     {
-        _spawner.spawnFood = true;
+        _spawner._foodSpawnCount += count;
     }
 
 }

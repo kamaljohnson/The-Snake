@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     private static Directions _nextDirection = Directions.Forward;
     private static Directions _currentDirection = Directions.Forward;
 
-    public List<GameObject> junctionFillers = new List<GameObject>(); 
+    public static List<GameObject> junctionFillers = new List<GameObject>(); 
     
     private void Update()
     {
@@ -44,12 +44,14 @@ public class Movement : MonoBehaviour
         {
             foreach (var tail in Snake.snakeBody)
             {
-                var tailTransform = tail.transform;
-                var loc = tailTransform.localPosition;
+                var tailLocation = tail.transform.localPosition;
+                var tailDestination = tail.destination;
+                var directionVector = Vector3.Normalize(tailDestination - tailLocation);
+                var loc = tailDestination - directionVector * stepSize;
                 var x = Mathf.RoundToInt(loc.x);
                 var y = Mathf.RoundToInt(loc.y);
                 var z = Mathf.RoundToInt(loc.z);
-                tailTransform.localPosition = new Vector3(x, y, z);
+                tail.transform.localPosition = new Vector3(x, y, z);
             }
             _snapped = true;
             DeviateMovement();
