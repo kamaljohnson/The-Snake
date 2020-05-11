@@ -24,9 +24,15 @@ public class Snake : MonoBehaviour
     public new static Transform transform;
 
     public static bool grow;
+
+    public Transform frontCollider;
+
+    public static Snake snake;
     
     public void Start()
     {
+        snake = this;
+        
         tailPrefab = snakeTailPrefab;
         transform = GetComponent<Transform>();
         

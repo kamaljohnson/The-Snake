@@ -88,6 +88,8 @@ public class Movement : MonoBehaviour
 
         head.destination = GetHeadDestination(head.destination);
 
+        Snake.snake.frontCollider.transform.localPosition = head.destination;
+        
         CheckDirectionChange();
         
         _snapped = false;
