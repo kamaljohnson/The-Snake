@@ -7,7 +7,7 @@ public class SnakeFrontCollider : MonoBehaviour
 {
     public static bool needsDeviation;
     
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
         {
@@ -20,8 +20,11 @@ public class SnakeFrontCollider : MonoBehaviour
                 Food.Eat(other.gameObject);
                 break;
             case "Tail":
-                Snake.DestroyTail(other.gameObject);
                 Health.Hit();
+                if (Health.health.healthLevel > 0)
+                {
+                    Snake.DestroyTail(other.gameObject);
+                }
                 break;
         }
     }

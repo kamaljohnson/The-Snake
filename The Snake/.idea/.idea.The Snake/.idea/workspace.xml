@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a4ef8b08-7290-4ea1-9991-f0085b770643" name="Default Changelist" comment="" />
+    <list default="true" id="a4ef8b08-7290-4ea1-9991-f0085b770643" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Movement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SnakeFrontCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SnakeFrontCollider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SnakeTail.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SnakeTail.cs" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +54,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.3.7/Editor/Models/Providers/Collab.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Movement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameProgressManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -70,10 +77,10 @@
         <option value="$PROJECT_DIR$/Assets/Health.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Food.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FoodSpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Snake.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Movement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SnakeTail.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wall.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Snake.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SnakeTail.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Movement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SnakeFrontCollider.cs" />
       </list>
     </option>
@@ -136,7 +143,7 @@
       <workItem from="1589149285513" duration="2000" />
       <workItem from="1589150152378" duration="22708000" />
       <workItem from="1589202685255" duration="2806000" />
-      <workItem from="1589211345827" duration="10544000" />
+      <workItem from="1589211345827" duration="16171000" />
     </task>
     <servers />
   </component>

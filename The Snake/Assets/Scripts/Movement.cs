@@ -17,8 +17,15 @@ public class Movement : MonoBehaviour
     private static Directions _nextDirection = Directions.Forward;
     private static Directions _currentDirection = Directions.Forward;
 
-    public static List<GameObject> junctionFillers = new List<GameObject>(); 
-    
+    public static List<GameObject> junctionFillers = new List<GameObject>();
+
+    public static Movement movement;
+
+    private void Start()
+    {
+        movement = this;
+    }
+
     private void Update()
     {
         if (!Health.IsAlive()) return;
@@ -41,8 +48,7 @@ public class Movement : MonoBehaviour
         var snapped = false;
 
         if (SnakeFrontCollider.needsDeviation)
-        {
-            foreach (var tail in Snake.snakeBody)
+        { foreach (var tail in Snake.snakeBody)
             {
                 var tailLocation = tail.transform.localPosition;
                 var tailDestination = tail.destination;
@@ -53,8 +59,8 @@ public class Movement : MonoBehaviour
                 var z = Mathf.RoundToInt(loc.z);
                 tail.transform.localPosition = new Vector3(x, y, z);
             }
+            _nextDirection = GetDeviatedDirection();
             _snapped = true;
-            DeviateMovement();
             return;
         }
 
@@ -96,10 +102,11 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void DeviateMovement()
+    private Directions GetDeviatedDirection()
     {
         SnakeFrontCollider.needsDeviation = false;
-
+        RaycastHit hit;
+        
         foreach (var tail in Snake.snakeBody)
         {
             tail.destination = tail.transform.localPosition;
@@ -109,28 +116,56 @@ public class Movement : MonoBehaviour
         
         if (_currentDirection == Directions.Right || _currentDirection == Directions.Left)
         {
-            
-            if (!Physics.Raycast(headLocation, Vector3.forward, out _, stepSize))
+            if (Physics.Raycast(headLocation, Vector3.forward, out hit, stepSize))
             {
-                _nextDirection = Directions.Forward;
-                return;
+                if (!hit.transform.CompareTag("Wall"))
+                {
+                    return Directions.Forward;
+                }
             }
-            if (!Physics.Raycast(headLocation, Vector3.back, out _, stepSize))
+            else
             {
-                _nextDirection = Directions.Back;
-                return;
+                return Directions.Forward;
+            }
+
+            if (Physics.Raycast(headLocation, Vector3.back, out hit, stepSize))
+            {
+                if (!hit.transform.CompareTag("Wall"))
+                {
+                    return Directions.Back;
+                }
+            }
+            else
+            {
+                return Directions.Back;
             }
         }
         
-        if (!Physics.Raycast(headLocation, Vector3.right, out _, stepSize))
+        if (Physics.Raycast(headLocation, Vector3.right, out hit, stepSize))
         {
-            _nextDirection = Directions.Right;
-            return;
+            if (!hit.transform.CompareTag("Wall"))
+            {
+                return Directions.Right;
+            }
         }
-        if (!Physics.Raycast(headLocation, Vector3.left, out _, stepSize))
+        else
         {
-            _nextDirection = Directions.Left;
+            return Directions.Right;
         }
+
+        if (Physics.Raycast(headLocation, Vector3.left, out hit, stepSize))
+        {
+            if (!hit.transform.CompareTag("Wall"))
+            {
+                return Directions.Left;
+            }
+        }
+        else
+        {
+            return Directions.Left;
+        }
+
+        return Directions.None;
     }
     
     private void UpdateDestinations()
@@ -242,6 +277,35 @@ public class Movement : MonoBehaviour
                 return Vector3.zero;
             default:
                 throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
+        }
+    }
+
+    public static void RecalculateFillers()
+    {
+        foreach (var filler in junctionFillers)
+        {
+            Destroy(filler);       
+        }
+        junctionFillers = new List<GameObject>();
+
+        for (var i = 0; i < Snake.snakeBody.Count - 2; i++)
+        {
+            var destination0 = Snake.snakeBody[i].destination;
+            var destination1 = Snake.snakeBody[i + 1].destination;
+            var destination2 = Snake.snakeBody[i + 2].destination;
+
+            var dir0 = Vector3.Normalize(destination0 - destination1);
+            var dir1 = Vector3.Normalize(destination1 - destination2);
+
+            const float tolerance = 0.1f;
+            
+            if (Vector3.Distance(dir0, dir1) > tolerance)
+            {
+                Debug.Log("filler created");
+                var filler = Instantiate(movement.junctionFillerPrefab, Snake.transform);
+                filler.transform.localPosition = destination1;
+                junctionFillers.Add(filler);
+            }
         }
     }
 }
