@@ -48,7 +48,8 @@ public class Movement : MonoBehaviour
         var snapped = false;
 
         if (SnakeFrontCollider.needsDeviation)
-        { foreach (var tail in Snake.snakeBody)
+        {
+            foreach (var tail in Snake.snakeBody)
             {
                 var tailLocation = tail.transform.localPosition;
                 var tailDestination = tail.destination;
@@ -211,6 +212,11 @@ public class Movement : MonoBehaviour
     {
         const float tolerance = 0.1f;
 
+        if (Snake.size <= 1)
+        {
+            return;
+        }
+        
         var head = Snake.snakeBody[0];
         var tail1 = Snake.snakeBody[1];
 

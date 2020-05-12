@@ -29,10 +29,11 @@
           <e p="Cannon.cs" t="Include" />
           <e p="CannonBeepScript.cs" t="Include" />
           <e p="CannonFuzzScript.cs" t="Include" />
+          <e p="CannonManager.cs" t="Include" />
           <e p="CanonBall.cs" t="Include" />
           <e p="CashManager.cs" t="Include" />
           <e p="Food.cs" t="Include" />
-          <e p="FoodSpawner.cs" t="Include" />
+          <e p="FoodManager.cs" t="Include" />
           <e p="GameAudioManager.cs" t="Include" />
           <e p="GameClock.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
@@ -49,6 +50,9 @@
           <e p="SnakeFrontCollider.cs" t="Include" />
           <e p="SnakeHead.cs" t="Include" />
           <e p="SnakeTail.cs" t="Include" />
+          <e p="Spawner.cs" t="Include" />
+          <e p="Spike.cs" t="Include" />
+          <e p="SpikeManager.cs" t="Include" />
           <e p="UnityBannerAds.cs" t="Include" />
           <e p="UnityVideoAds.cs" t="Include" />
           <e p="Wall.cs" t="Include" />

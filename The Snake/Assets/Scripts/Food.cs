@@ -12,6 +12,6 @@ public class Food : MonoBehaviour
 
     private void OnDestroy()
     {
-        FoodSpawner.SpawnFood();
+        Spawner.Spawn(SpawnObject.Food);
     }
 }
