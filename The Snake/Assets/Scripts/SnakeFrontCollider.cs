@@ -20,8 +20,11 @@ public class SnakeFrontCollider : MonoBehaviour
                 Food.Eat(other.gameObject);
                 break;
             case "Tail":
-                Snake.DestroyTail(other.gameObject);
                 Health.Hit();
+                if (Health.health.healthLevel > 0)
+                {
+                    Snake.DestroyTail(other.gameObject);
+                }
                 break;
         }
     }

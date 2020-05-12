@@ -17,8 +17,15 @@ public class Movement : MonoBehaviour
     private static Directions _nextDirection = Directions.Forward;
     private static Directions _currentDirection = Directions.Forward;
 
-    public static List<GameObject> junctionFillers = new List<GameObject>(); 
-    
+    public static List<GameObject> junctionFillers = new List<GameObject>();
+
+    public static Movement movement;
+
+    private void Start()
+    {
+        movement = this;
+    }
+
     private void Update()
     {
         if (!Health.IsAlive()) return;
@@ -41,9 +48,7 @@ public class Movement : MonoBehaviour
         var snapped = false;
 
         if (SnakeFrontCollider.needsDeviation)
-        {
-            Debug.Log("here 0");
-            foreach (var tail in Snake.snakeBody)
+        { foreach (var tail in Snake.snakeBody)
             {
                 var tailLocation = tail.transform.localPosition;
                 var tailDestination = tail.destination;
@@ -99,7 +104,6 @@ public class Movement : MonoBehaviour
 
     private Directions GetDeviatedDirection()
     {
-        Debug.Log("here 1");
         SnakeFrontCollider.needsDeviation = false;
         RaycastHit hit;
         
@@ -166,7 +170,6 @@ public class Movement : MonoBehaviour
     
     private void UpdateDestinations()
     {
-        Debug.Log("here 2");
         _currentDirection = _nextDirection;
         var head = Snake.snakeBody[0];
 
@@ -285,11 +288,25 @@ public class Movement : MonoBehaviour
         }
         junctionFillers = new List<GameObject>();
 
-        foreach (var tail in Snake.snakeBody)
+        for (var i = 0; i < Snake.snakeBody.Count - 2; i++)
         {
+            var destination0 = Snake.snakeBody[i].destination;
+            var destination1 = Snake.snakeBody[i + 1].destination;
+            var destination2 = Snake.snakeBody[i + 2].destination;
+
+            var dir0 = Vector3.Normalize(destination0 - destination1);
+            var dir1 = Vector3.Normalize(destination1 - destination2);
+
+            const float tolerance = 0.1f;
             
+            if (Vector3.Distance(dir0, dir1) > tolerance)
+            {
+                Debug.Log("filler created");
+                var filler = Instantiate(movement.junctionFillerPrefab, Snake.transform);
+                filler.transform.localPosition = destination1;
+                junctionFillers.Add(filler);
+            }
         }
-        
     }
 }
 

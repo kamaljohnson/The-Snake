@@ -14,9 +14,4 @@ public class SnakeTail : MonoBehaviour
         
         transform = GetComponent<Transform>();
     }
-
-    private void OnDestroy()
-    {
-        
-    }
 }
