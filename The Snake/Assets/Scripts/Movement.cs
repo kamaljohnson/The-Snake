@@ -42,6 +42,7 @@ public class Movement : MonoBehaviour
 
         if (SnakeFrontCollider.needsDeviation)
         {
+            Debug.Log("here 0");
             foreach (var tail in Snake.snakeBody)
             {
                 var tailLocation = tail.transform.localPosition;
@@ -53,8 +54,8 @@ public class Movement : MonoBehaviour
                 var z = Mathf.RoundToInt(loc.z);
                 tail.transform.localPosition = new Vector3(x, y, z);
             }
+            _nextDirection = GetDeviatedDirection();
             _snapped = true;
-            DeviateMovement();
             return;
         }
 
@@ -96,10 +97,12 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void DeviateMovement()
+    private Directions GetDeviatedDirection()
     {
+        Debug.Log("here 1");
         SnakeFrontCollider.needsDeviation = false;
-
+        RaycastHit hit;
+        
         foreach (var tail in Snake.snakeBody)
         {
             tail.destination = tail.transform.localPosition;
@@ -109,32 +112,61 @@ public class Movement : MonoBehaviour
         
         if (_currentDirection == Directions.Right || _currentDirection == Directions.Left)
         {
-            
-            if (!Physics.Raycast(headLocation, Vector3.forward, out _, stepSize))
+            if (Physics.Raycast(headLocation, Vector3.forward, out hit, stepSize))
             {
-                _nextDirection = Directions.Forward;
-                return;
+                if (!hit.transform.CompareTag("Wall"))
+                {
+                    return Directions.Forward;
+                }
             }
-            if (!Physics.Raycast(headLocation, Vector3.back, out _, stepSize))
+            else
             {
-                _nextDirection = Directions.Back;
-                return;
+                return Directions.Forward;
+            }
+
+            if (Physics.Raycast(headLocation, Vector3.back, out hit, stepSize))
+            {
+                if (!hit.transform.CompareTag("Wall"))
+                {
+                    return Directions.Back;
+                }
+            }
+            else
+            {
+                return Directions.Back;
             }
         }
         
-        if (!Physics.Raycast(headLocation, Vector3.right, out _, stepSize))
+        if (Physics.Raycast(headLocation, Vector3.right, out hit, stepSize))
         {
-            _nextDirection = Directions.Right;
-            return;
+            if (!hit.transform.CompareTag("Wall"))
+            {
+                return Directions.Right;
+            }
         }
-        if (!Physics.Raycast(headLocation, Vector3.left, out _, stepSize))
+        else
         {
-            _nextDirection = Directions.Left;
+            return Directions.Right;
         }
+
+        if (Physics.Raycast(headLocation, Vector3.left, out hit, stepSize))
+        {
+            if (!hit.transform.CompareTag("Wall"))
+            {
+                return Directions.Left;
+            }
+        }
+        else
+        {
+            return Directions.Left;
+        }
+
+        return Directions.None;
     }
     
     private void UpdateDestinations()
     {
+        Debug.Log("here 2");
         _currentDirection = _nextDirection;
         var head = Snake.snakeBody[0];
 
@@ -243,6 +275,21 @@ public class Movement : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
         }
+    }
+
+    public static void RecalculateFillers()
+    {
+        foreach (var filler in junctionFillers)
+        {
+            Destroy(filler);       
+        }
+        junctionFillers = new List<GameObject>();
+
+        foreach (var tail in Snake.snakeBody)
+        {
+            
+        }
+        
     }
 }
 

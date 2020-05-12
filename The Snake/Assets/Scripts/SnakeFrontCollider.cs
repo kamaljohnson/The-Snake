@@ -7,7 +7,7 @@ public class SnakeFrontCollider : MonoBehaviour
 {
     public static bool needsDeviation;
     
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
         {

@@ -2427,7 +2427,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 9.4666e-41, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -4721,7 +4721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   food: {fileID: 9158194767969773686, guid: 5797e7476b17fd049a35d37078c8fb4a, type: 3}
-  initialFoodCount: 100
+  initialFoodCount: 10
   groundSize: {x: 19, y: 33}
 --- !u!1 &1718190996
 GameObject:
@@ -5536,7 +5536,7 @@ PrefabInstance:
     - target: {fileID: 6924127229481539809, guid: 6e3c83585d7529b4aa7c82935708801a,
         type: 3}
       propertyPath: stepSpeed
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6924127229481539812, guid: 6e3c83585d7529b4aa7c82935708801a,
         type: 3}
