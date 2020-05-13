@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CanonBall : MonoBehaviour
@@ -19,6 +20,8 @@ public class CanonBall : MonoBehaviour
     public Animator animator;
 
     public Transform particleEffectTransform;
+
+    public GameObject targetWarningObj;
     
     public void Start()
     {
@@ -50,6 +53,9 @@ public class CanonBall : MonoBehaviour
             
             animator.Play("CannonTimerAnimation", -1, 0f);
             particleEffectTransform.eulerAngles = new Vector3(0, 1, 0);
+            
+            Destroy(targetWarningObj);
+            
             StartCoroutine(TriggerCannonDeactivation());
         }
     }

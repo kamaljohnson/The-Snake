@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public enum SpawnObject
@@ -15,6 +16,9 @@ public class Spawner : MonoBehaviour
 
     public GameObject food;
     public GameObject spike;
+
+    public Transform groundTransform;
+    
     private static Spawner _spawner;
     
     private readonly List<int> _spawnObjectCounter = new List<int>
@@ -108,5 +112,9 @@ public class Spawner : MonoBehaviour
             StartCoroutine(SpawnWithDelay(spawnObject, count, delay));
         }
     }
-    
+
+    public static Transform GetWorldTransform()
+    {
+        return _spawner.groundTransform;
+    }
 }

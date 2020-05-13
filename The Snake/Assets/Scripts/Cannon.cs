@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using TMPro;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Random = UnityEngine.Random;
 
 public class Cannon : MonoBehaviour
 {
     public GameObject cannonBall;
+    public GameObject missileTargetWarningPrefab;
     
     public Transform shootTransform;
 
@@ -43,7 +39,9 @@ public class Cannon : MonoBehaviour
         _reloadTimer += Time.deltaTime;
         if (_reloadTimer >= reloadDelay)
         {
-            FireCannonAtPoint(Spawner.GetRandomPointOnGround());
+            var targetPointOnGround = Spawner.GetRandomPointOnGround();
+            FireCannonAtPoint(targetPointOnGround);
+            
             _reloadTimer = 0;
         }
 
@@ -59,8 +57,13 @@ public class Cannon : MonoBehaviour
         rotation.eulerAngles = new Vector3(rotation.x, cannonBodyTransform.rotation.eulerAngles.y , rotation.z);
         cannonBodyTransform.rotation = rotation;
 
-        var cannonBallObject = GameObject.Instantiate(cannonBall);
+        var cannonBallObject = Instantiate(cannonBall);
         cannonballInstance = cannonBallObject.GetComponent<Rigidbody>();
+        
+        var targetWarningObj = Instantiate(missileTargetWarningPrefab, Spawner.GetWorldTransform());
+        targetWarningObj.transform.localPosition = point + new Vector3(0, 15.75f, 0);    //offsetting to level the ground top
+
+        cannonBallObject.GetComponent<CanonBall>().targetWarningObj = targetWarningObj;
         
         var velocity = BallisticVelocity(point, angle);
         

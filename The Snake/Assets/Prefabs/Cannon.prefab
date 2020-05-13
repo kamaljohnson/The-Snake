@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 1869493573625513357}
   - component: {fileID: 1869493573625616810}
   - component: {fileID: 1869493573625616812}
+  - component: {fileID: 951822570155552097}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -151,6 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannonBall: {fileID: 6437247045988601619, guid: dc0fa0178471d394ea696b497381e653,
+    type: 3}
+  missileTargetWarningPrefab: {fileID: 8359400921938734055, guid: 216a3968a9fc0b54fb884c0855fa1813,
     type: 3}
   shootTransform: {fileID: 1869493575061616505}
   shootSound: {fileID: 1869493573625616812}
@@ -255,6 +258,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &951822570155552097
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869493573625616813}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 221060d8ce30d46459e045ee15e5002d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1869493573625616815
 GameObject:
   m_ObjectHideFlags: 0
