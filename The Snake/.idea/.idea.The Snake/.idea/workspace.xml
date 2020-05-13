@@ -4,14 +4,15 @@
     <list default="true" id="a4ef8b08-7290-4ea1-9991-f0085b770643" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The Snake/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cannon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cannon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CanonBall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/CanonBall.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cannon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cannon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CannonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CannonManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Movement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CanonBall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CanonBall.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spike.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spike.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpikeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpikeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StartButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StartButton.cs.meta" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +43,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerUp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@3.4.5/Runtime/Advertisement/Platform/Editor/EditorPlatform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Wall.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CanonBall.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spike.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SnakeFrontCollider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
@@ -61,7 +63,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cannon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CannonManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/StartButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CashManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.3.7/Editor/Models/Providers/Collab.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Movement.cs" root0="FORCE_HIGHLIGHTING" />
@@ -74,7 +75,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/GameProgressManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PowerUp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Clock.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Cannon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Head.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SnakeHeadMovementController.cs" />
         <option value="$PROJECT_DIR$/Assets/Snake.cs" />
@@ -96,11 +96,13 @@
         <option value="$PROJECT_DIR$/Assets/SpikeManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Spike.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpikeManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CannonManager.cs" />
         <option value="$PROJECT_DIR$/Assets/StartButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Movement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CannonManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CanonBall.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Cannon.cs" />
       </list>
     </option>
   </component>
@@ -165,7 +167,7 @@
       <workItem from="1589211345827" duration="16703000" />
       <workItem from="1589294249105" duration="4079000" />
       <workItem from="1589315650260" duration="5206000" />
-      <workItem from="1589330280086" duration="1300000" />
+      <workItem from="1589330280086" duration="4065000" />
     </task>
     <servers />
   </component>

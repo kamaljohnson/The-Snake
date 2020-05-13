@@ -56,19 +56,14 @@ public class CanonBall : MonoBehaviour
 
     private IEnumerator TriggerCannonDeactivation()
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(destructionDuration);
         
         DeactivateCannon();
     }
     
     private void DeactivateCannon()
     {
-        transform.GetChild(0).tag = "UsedCannonBall";
-        GameManager.ReportCannonBallUsed();
+        Destroy(gameObject);
     }
-    
-    private void OnDestroy()
-    {
-        GameManager.ReportCannonBallUsed();
-    }
+
 }

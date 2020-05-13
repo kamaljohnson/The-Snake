@@ -45,13 +45,7 @@ public class Spawner : MonoBehaviour
 
     private void Spawn(SpawnObject spawnObject)
     {
-        var randX = Mathf.RoundToInt(Random.Range(0, _spawner.groundSize.x));
-        var randZ = Mathf.RoundToInt(Random.Range(0, _spawner.groundSize.y));
-
-        randX *= 2;
-        randZ *= 2;
-        
-        var spawnPointer = transform.position + new Vector3(randX, 5, randZ);
+        var spawnPointer = GetRandomPointOnGround();
 
         if (!Physics.Raycast(spawnPointer, Vector3.down, out var hit, 10f)) return;
         if (!hit.collider.CompareTag("Ground")) return;
@@ -69,9 +63,22 @@ public class Spawner : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(spawnObject), spawnObject, null);
         }
         
-        obj.transform.localPosition = new Vector3(randX, 0, randZ);
+        obj.transform.position = new Vector3(spawnPointer.x, transform.position.y, spawnPointer.z);
 
         _spawnObjectCounter[(int)spawnObject]--;
+    }
+
+    public static Vector3 GetRandomPointOnGround()
+    {
+        
+        var randX = Mathf.RoundToInt(Random.Range(0, _spawner.groundSize.x));
+        var randZ = Mathf.RoundToInt(Random.Range(0, _spawner.groundSize.y));
+
+        randX *= 2;
+        randZ *= 2;
+        
+        var spawnPointer = _spawner.transform.position + new Vector3(randX, 5, randZ);
+        return spawnPointer;
     }
     
     public static void Spawn(SpawnObject spawnObject, int count = 1, int delay = 0)

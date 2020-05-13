@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90470bd2f4687314285f41adea3b0890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionDuration: 1
+  destructionDuration: 9
   cannonHitSound: {fileID: 7478605797340976370}
   animator: {fileID: 8456785257493872629}
   particleEffectTransform: {fileID: 6738782422291819135}

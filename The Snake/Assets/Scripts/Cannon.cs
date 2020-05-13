@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 public class Cannon : MonoBehaviour
 {
     public GameObject cannonBall;
-
-    public TMP_Text remainingCannonBallCountText;
     
     public Transform shootTransform;
 
@@ -18,13 +18,11 @@ public class Cannon : MonoBehaviour
     
     private Rigidbody cannonballInstance;
 
+    public Transform cannonBodyTransform;
+
     public int cannonBallCount;
-    private int _cannonBallsLeft;
-    private bool _reloaded;
     public float reloadDelay;
     private float _reloadTimer;
-
-    private static Cannon _cannon;
     
     [SerializeField]
     [Range(10f, 80f)]
@@ -34,81 +32,32 @@ public class Cannon : MonoBehaviour
     
     private void Start()
     {
-        _cannon = this;
         _touched = false;
         
-        _cannonBallsLeft = cannonBallCount;
-        _reloaded = true;
         _reloadTimer = 0;
     }
 
     private void Update()
     {
-        remainingCannonBallCountText.text = _cannonBallsLeft.ToString();
-        
-        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
+        if (GameManager.gameState != GameState.Playing) return;
+        _reloadTimer += Time.deltaTime;
+        if (_reloadTimer >= reloadDelay)
         {
-            if (!GameManager.CanPlay) return;
-            
-            Vector3 pointerPosition;
-            if (Input.touchCount > 0 && _touched == false)
-            {
-                _touched = true;
-                pointerPosition = Input.GetTouch(0).position;
-            }
-            else
-            {
-                pointerPosition = Input.mousePosition;
-            }
-            
-            var ray = Camera.main.ScreenPointToRay(pointerPosition);
-
-            RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                // 8 -> GameBoard Layer
-                if (hitInfo.transform.gameObject.layer != 8) return;
-                
-                //if user is at the menu start the game
-                if (GameManager.gameState == GameState.AtMenu)
-                {
-                    _cannonBallsLeft = cannonBallCount;
-                    GameManager.StartGame();
-                }
-                
-                if (_cannonBallsLeft > 0 && _reloaded)
-                {
-                    FireCannonAtPoint(hitInfo.point);
-                }
-            }
+            FireCannonAtPoint(Spawner.GetRandomPointOnGround());
+            _reloadTimer = 0;
         }
-        else
-        {
-            _touched = false;
-            if (_cannonBallsLeft > 0 && !_reloaded && _reloadTimer >= reloadDelay)
-            {
-                _reloadTimer = 0;
-                _reloaded = true;
-            }
 
-            if (_reloadTimer < reloadDelay)
-            {
-                _reloadTimer += Time.deltaTime;
-            }
-        }
     }
-
+    
     private void FireCannonAtPoint(Vector3 point)
     {
         shootSound.Play();
         shootAnimator.Play("CannonShootAnimation", -1, 0f);
-        _cannonBallsLeft--;
-        _reloaded = false;
         
-        var rotation = transform.rotation;
-        transform.LookAt(point);
-        rotation.eulerAngles = new Vector3(rotation.x, transform.rotation.eulerAngles.y , rotation.z);
-        transform.rotation = rotation;
+        var rotation = cannonBodyTransform.rotation;
+        cannonBodyTransform.LookAt(point);
+        rotation.eulerAngles = new Vector3(rotation.x, cannonBodyTransform.rotation.eulerAngles.y , rotation.z);
+        cannonBodyTransform.rotation = rotation;
 
         var cannonBallObject = GameObject.Instantiate(cannonBall);
         cannonballInstance = cannonBallObject.GetComponent<Rigidbody>();
@@ -138,7 +87,6 @@ public class Cannon : MonoBehaviour
     public void AddExtraCannonBall(int count)
     {
         cannonBallCount += count;
-        _cannonBallsLeft += 1;
         PlayerPrefs.SetInt("CannonBallCount", cannonBallCount);
     }
 
@@ -149,8 +97,6 @@ public class Cannon : MonoBehaviour
         {
             Destroy(ball);
         }
-        _cannon._cannonBallsLeft = _cannon.cannonBallCount;
-
     }
 
     private bool IsPointerOverUIObject() {
