@@ -70,7 +70,7 @@ public class Cannon : MonoBehaviour
                 if (hitInfo.transform.gameObject.layer != 8) return;
                 
                 //if user is at the menu start the game
-                if (GameManager.GameState == GameState.AtMenu)
+                if (GameManager.gameState == GameState.AtMenu)
                 {
                     _cannonBallsLeft = cannonBallCount;
                     GameManager.StartGame();

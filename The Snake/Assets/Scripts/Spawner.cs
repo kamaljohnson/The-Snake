@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -21,7 +22,7 @@ public class Spawner : MonoBehaviour
         0,        // Food initial count 
         0        // Spike initial count 
     };
-    
+
     public Vector2 groundSize;
 
     public void Awake()
@@ -31,6 +32,8 @@ public class Spawner : MonoBehaviour
 
     public void Update()
     {
+        if(GameManager.gameState != GameState.Playing) return;
+        
         for (var i = 0; i < _spawnObjectCounter.Count; i++)
         {
             if (_spawnObjectCounter[i] > 0)
@@ -71,9 +74,32 @@ public class Spawner : MonoBehaviour
         _spawnObjectCounter[(int)spawnObject]--;
     }
     
-    public static void Spawn(SpawnObject spawnObject, int count = 1)
+    public static void Spawn(SpawnObject spawnObject, int count = 1, int delay = 0)
     {
-        _spawner._spawnObjectCounter[(int)spawnObject] += count;
+        if (delay == 0)
+        {
+            _spawner._spawnObjectCounter[(int)spawnObject] += count;
+        }
+        else
+        {
+            _spawner.InitiateSpawnWithDelay(spawnObject, count, delay);
+        }
     }
 
+    private void InitiateSpawnWithDelay(SpawnObject spawnObject, int count, int delay)
+    {
+        StartCoroutine(SpawnWithDelay(spawnObject, count, delay));
+    }
+    
+    private IEnumerator SpawnWithDelay(SpawnObject spawnObject, int count, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _spawner._spawnObjectCounter[(int) spawnObject]++;
+        count--;
+        if (count > 0)
+        {
+            StartCoroutine(SpawnWithDelay(spawnObject, count, delay));
+        }
+    }
+    
 }

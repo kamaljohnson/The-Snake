@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        if (!Health.IsAlive()) return;
+        if (!Health.IsAlive() || GameManager.gameState != GameState.Playing) return;
         
         HandleInput();
         

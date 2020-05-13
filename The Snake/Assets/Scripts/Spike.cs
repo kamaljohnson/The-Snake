@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
@@ -16,5 +17,10 @@ public class Spike : MonoBehaviour
         {
             Snake.DestroyTail(other.gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Spawner.Spawn(SpawnObject.Spike, 1);
     }
 }

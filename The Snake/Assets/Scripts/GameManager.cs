@@ -11,12 +11,10 @@ public enum GameState
     GameWon
 }
 
-
-
 public class GameManager : MonoBehaviour
 {
 
-    public static GameState GameState;
+    public static GameState gameState;
 
     public static bool CanPlay;
     
@@ -26,7 +24,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject transitionUi;
     public GameObject gameWonUi;
-
+    public GameObject gameBoard;
+    
     private static int _adCounter;
     
     private static bool _notifiedAllMonstersEffected;
@@ -36,7 +35,7 @@ public class GameManager : MonoBehaviour
         _gameManager = this;
         Screen.orientation = ScreenOrientation.Portrait;
         _adCounter = 0;
-        GameState = GameState.AtMenu;
+        gameState = GameState.AtMenu;
         GoToMenu();
     }
 
@@ -49,13 +48,13 @@ public class GameManager : MonoBehaviour
 
         _gameManager.gameWonUi.SetActive(false);
         
-        GameState = GameState.AtMenu;
+        gameState = GameState.AtMenu;
         StartCoroutine(TriggerCanPlay());
     }
     
     public static void StartGame()
     {
-        GameState = GameState.Playing;
+        gameState = GameState.Playing;
         _gameManager.HideMenu();
     }
 
@@ -75,7 +74,7 @@ public class GameManager : MonoBehaviour
     public static void GameWon()
     {        
         ShowAdIfCounter();
-        GameState = GameState.GameWon;
+        gameState = GameState.GameWon;
         _gameManager.gameWonUi.SetActive(true);
         CanPlay = false;
     }
@@ -101,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckGameEnding()
     {
-        if(GameState != GameState.Playing) return;
+        if(gameState != GameState.Playing) return;
         
         if (GameProgressManager.GetCurrentProgressState() == GameProgressState.Complete)
         {
@@ -116,11 +115,13 @@ public class GameManager : MonoBehaviour
 
     private void ShowMenu()
     {
+        _gameManager.gameBoard.GetComponent<Animator>().Play("GameBoardAnimateUp", -1, 0f);
         bottomPowerUpUi.GetComponent<Animator>().Play("BottomPowerUpAnimateIn", -1, 0);
     }
 
     private void HideMenu()
     {
+        _gameManager.gameBoard.GetComponent<Animator>().Play("GameBoardAnimateDown", -1, 0f);
         bottomPowerUpUi.GetComponent<Animator>().Play("BottomPowerUpAnimateOut", -1, 0);
     }
 
