@@ -13,9 +13,9 @@ public class CanonBall : MonoBehaviour
 
     private float _destroyCheckerTimer;
 
-    private Rigidbody rb;
+    private Rigidbody _rb;
 
-    private bool isCannonFalling = true;
+    private bool _isCannonFalling = true;
 
     public Transform blastTransform;
 
@@ -25,22 +25,16 @@ public class CanonBall : MonoBehaviour
     
     public void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
     }
     
     public void Update()
     {
-        _destroyCheckerTimer += Time.deltaTime;
-        if (_destroyCheckerTimer >= 10 && isCannonFalling)
-        {
-            Destroy(gameObject);
-        }
+
+        if (!_isCannonFalling) return;
         
-        if (isCannonFalling)
-        {
-            transform.LookAt(transform.position + rb.velocity);
-        }
-        
+        transform.LookAt(transform.position + _rb.velocity);
+            
         if (Vector3.Distance(transform.position, targetWarningObj.transform.position) <= blastTriggerRange)
         {
             Hit();
@@ -49,9 +43,9 @@ public class CanonBall : MonoBehaviour
 
     private void Hit()
     {
-        isCannonFalling = false;
+        _isCannonFalling = false;
         
-        rb.isKinematic = true;
+        _rb.isKinematic = true;
         cannonHitSound.Play();
         
         blastTransform.gameObject.SetActive(true);

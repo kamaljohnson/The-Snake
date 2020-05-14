@@ -357,7 +357,7 @@ MonoBehaviour:
   cannonHitSound: {fileID: 7478605797340976370}
   blastTransform: {fileID: 6738782422291819135}
   targetWarningObj: {fileID: 0}
-  blastTriggerRange: 2
+  blastTriggerRange: 2.5
 --- !u!82 &7478605797340976370
 AudioSource:
   m_ObjectHideFlags: 0
