@@ -73,9 +73,10 @@ public class Movement : MonoBehaviour
             tailTransform.localPosition = Vector3.MoveTowards(tailTransform.localPosition,
                 tailDestination, stepSpeed * Time.deltaTime);
 
-            if (i >= Snake.size - 1) continue;
+            if (i >= Snake.size - 1 && Snake.size != 1) continue;
             if (Vector3.Distance(tailTransform.localPosition, tailDestination) < tolerance)
             {
+                Debug.Log("here");
                 snapped = true;
             }
         }
