@@ -17,11 +17,11 @@ public class CanonBall : MonoBehaviour
 
     private bool isCannonFalling = true;
 
-    public Animator animator;
-
-    public Transform particleEffectTransform;
+    public Transform blastTransform;
 
     public GameObject targetWarningObj;
+
+    public float blastTriggerRange;
     
     public void Start()
     {
@@ -40,24 +40,26 @@ public class CanonBall : MonoBehaviour
         {
             transform.LookAt(transform.position + rb.velocity);
         }
+        
+        if (Vector3.Distance(transform.position, targetWarningObj.transform.position) <= blastTriggerRange)
+        {
+            Hit();
+        }
     }
 
-    public void OnCollisionEnter(Collision other)
+    private void Hit()
     {
-        if (other.collider.CompareTag("Ground"))
-        {
-            isCannonFalling = false;
-            
-            rb.isKinematic = true;
-            cannonHitSound.Play();
-            
-            animator.Play("CannonTimerAnimation", -1, 0f);
-            particleEffectTransform.eulerAngles = new Vector3(0, 1, 0);
-            
-            Destroy(targetWarningObj);
-            
-            StartCoroutine(TriggerCannonDeactivation());
-        }
+        isCannonFalling = false;
+        
+        rb.isKinematic = true;
+        cannonHitSound.Play();
+        
+        blastTransform.gameObject.SetActive(true);
+        blastTransform.eulerAngles = new Vector3(90, 0, 0);
+        
+        Destroy(targetWarningObj);
+        
+        StartCoroutine(TriggerCannonDeactivation());
     }
 
     private IEnumerator TriggerCannonDeactivation()

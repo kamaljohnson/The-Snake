@@ -80,7 +80,7 @@ public class Cannon : MonoBehaviour
         float dist = dir.magnitude; // get horizontal currentDirection
         float a = angle * Mathf.Deg2Rad; // Convert angle to radians
         dir.y = dist * Mathf.Tan(a); // set dir to the elevation angle.
-        dist += height / Mathf.Tan(a); // Correction for small height differences
+        dist += height / Mathf.Tan(a) - 0.7f; // Correction for small height differences
 
         // Calculate the velocity magnitude
         float velocity = Mathf.Sqrt(dist * Physics.gravity.magnitude / Mathf.Sin(2 * a));
